@@ -1,0 +1,4 @@
+[Unit]
+Description=greenLightAdapter
+[Install]
+WantedBy=multi-user.target

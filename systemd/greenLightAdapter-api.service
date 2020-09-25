@@ -1,0 +1,9 @@
+[Unit]
+Description=greenLightAdapter API
+After=network-online.target
+PartOf=greenLightAdapter.target
+[Service]
+ExecStart=/usr/local/bin/greenLightAdapter/app/main.py
+[Install]
+WantedBy=greenLightAdapter.target
+Alias=greenLightAdapter.service
