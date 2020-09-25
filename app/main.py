@@ -20,7 +20,7 @@
 import uvicorn
 from fastapi import FastAPI
 
-from app.api.api import api_router
+from api.api import api_router
 from core.config import PROJECT_NAME, API_PREFIX
 
 app = FastAPI(title=PROJECT_NAME)
