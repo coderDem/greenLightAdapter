@@ -21,10 +21,11 @@ import uvicorn
 from fastapi import FastAPI
 
 from app.api.api import api_router
+from core.config import PROJECT_NAME, API_PREFIX
 
-app = FastAPI()
+app = FastAPI(title=PROJECT_NAME)
 
-app.include_router(api_router)
+app.include_router(api_router, prefix=API_PREFIX)
 
 if __name__ == '__main__':
     uvicorn.run("main:app", host='0.0.0.0', port=8007, reload=True)
