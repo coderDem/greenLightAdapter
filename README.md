@@ -52,4 +52,5 @@ to understand how greenLightAdapter works and to have a first impression, please
 
 * you need at least one BigBlueButton server and Greelnlight configured via api or config file.
 
-
+## docs
+you can find the docs under http://localhost:8007/docs. With the help of the swagger-client you can test the calls.
