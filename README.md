@@ -52,5 +52,4 @@ to understand how greenLightAdapter works and to have a first impression, please
 
 * you need at least one BigBlueButton server and Greelnlight configured via api or config file.
 
-* execute a first command via the commandline to see if it works. slCli.py -m [-s bbb_server_id] gives you information about the running meetings on your server. If you do not specify a server_id the id bbb is used. If you gave your first bbb server the id bbb you do not have to specify -s server_id for this command.
 
