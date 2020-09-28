@@ -55,6 +55,8 @@ to understand how greenLightAdapter works and to have a first impression, please
 ## docs
 you can find the docs under http://localhost:8007/docs. With the help of the swagger-client you can test the calls.
 
+![Swagger Screenshot](diagramm.png "Swagger Screenshot")
+
 ## TODO
 
 * secure the api
