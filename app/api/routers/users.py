@@ -18,6 +18,10 @@ class User(BaseModel):
     provider: Optional[str] = 'greenlight'
 
 
+class DeleteUser(BaseModel):
+    email: str
+
+
 @router.post("/create/", status_code=status.HTTP_201_CREATED)
 async def create_user(user: User):
     command = 'docker exec greenlight-v2 bundle exec rake user:create[\"' + user.name + '\",\"' + user.email \
@@ -28,8 +32,8 @@ async def create_user(user: User):
 
 
 @router.post("/delete/", status_code=status.HTTP_201_CREATED)
-async def delete_user(useremail: str):
-    command = 'docker exec greenlight-v2 bundle exec rake user:delete[\"' + useremail + '\"] /bin/bash',
+async def delete_user(deleteuser: DeleteUser):
+    command = 'docker exec greenlight-v2 bundle exec rake user:delete[\"' + deleteuser.email + '\"] /bin/bash',
     with open(LOG_PATH, "a") as output:
         subprocess.check_output(command, shell=True, stdin=output, stderr=output)
         return

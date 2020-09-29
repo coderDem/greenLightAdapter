@@ -14,18 +14,27 @@ class Room(BaseModel):
     email: str
 
 
+class DeleteRoom(BaseModel):
+    roomname: str
+
+
+class ShareRoom(BaseModel):
+    roomname: str
+    useremail: str
+
+
 @router.post("/delete/", status_code=status.HTTP_201_CREATED)
-async def delete_room(roomname: str):
-    command = '	docker exec greenlight-v2 bundle exec rake room:delete[\"' + roomname + '\"] /bin/bash',
+async def delete_room(deleteroom: DeleteRoom):
+    command = '	docker exec greenlight-v2 bundle exec rake room:delete[\"' + deleteroom.roomname + '\"] /bin/bash',
     with open(LOG_PATH, "a") as output:
         subprocess.check_output(command, shell=True, stdin=output, stderr=output)
         return
 
 
 @router.post("/share/", status_code=status.HTTP_201_CREATED)
-async def share_room(roomname: str, email: str):
-    command = '	docker exec greenlight-v2 bundle exec rake room:share[\"' + roomname + '\",\"' \
-              + email + '\"] /bin/bash',
+async def share_room(shareroom: ShareRoom):
+    command = '	docker exec greenlight-v2 bundle exec rake room:share[\"' + shareroom.roomname + '\",\"' \
+              + shareroom.useremail + '\"] /bin/bash',
     with open(LOG_PATH, "a") as output:
         subprocess.check_output(command, shell=True, stdin=output, stderr=output)
         return
