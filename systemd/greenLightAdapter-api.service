@@ -3,7 +3,9 @@ Description=greenLightAdapter API
 After=network-online.target
 PartOf=greenLightAdapter.target
 [Service]
-ExecStart=/usr/local/bin/greenLightAdapter/app/main.py
+Type=simple
+ExecStart=/usr/local/bin/python3.7 /usr/local/bin/greenLightAdapter/app/main.py
+StandardInput=tty-force
 [Install]
 WantedBy=greenLightAdapter.target
 Alias=greenLightAdapter.service
