@@ -28,8 +28,8 @@ async def create_user(user: User):
 
 
 @router.post("/delete/", status_code=status.HTTP_201_CREATED)
-async def delete_user(user: User):
-    command = 'docker exec greenlight-v2 bundle exec rake user:delete[\"' + user.email + '\"] /bin/bash',
+async def delete_user(useremail: str):
+    command = 'docker exec greenlight-v2 bundle exec rake user:delete[\"' + useremail + '\"] /bin/bash',
     with open(LOG_PATH, "a") as output:
         subprocess.check_output(command, shell=True, stdin=output, stderr=output)
         return
